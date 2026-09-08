@@ -4,6 +4,7 @@ import { ProductsPage } from '@pages/products.page';
 import { ShoppingCartPage } from '@pages/shoppingCart.page';
 import { CheckoutPage } from '@pages/checkout.page';
 import { CheckoutCompletedPage } from '@pages/checkoutCompleted.page';
+import { SearchPage } from '@pages/search.page';
 
 type MyFixtures = {
     loginPage: LoginPage;
@@ -11,6 +12,7 @@ type MyFixtures = {
     shoppingCartPage: ShoppingCartPage;
     checkoutPage: CheckoutPage;
     checkoutCompletedPage: CheckoutCompletedPage;
+    searchPage: SearchPage;
     cartSetup: { 
         clearBeforeTest: () => Promise<void> 
         populateBeforeTest: () => Promise<void>;
@@ -37,6 +39,10 @@ export const test = base.extend<MyFixtures>({
     checkoutCompletedPage: async ({ page }, use) => {
         const checkoutCompletedPage = new CheckoutCompletedPage(page);
         await use(checkoutCompletedPage);
+    },
+    searchPage: async ({ page }, use) => {
+        const searchPage = new SearchPage(page);
+        await use(searchPage);
     }, 
     cartSetup: async ({ shoppingCartPage, productsPage }, use) => {
         const setupObject = {
